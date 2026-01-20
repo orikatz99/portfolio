@@ -1,0 +1,290 @@
+/* Projects.css */
+.projects{
+  padding: 18px 0 10px;
+}
+
+.projects__header{
+  margin-bottom: 14px;
+}
+
+.projects__title{
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: -0.02em;
+  color: #1f2937;
+}
+
+.projects__subtitle{
+  margin: 6px 0 0;
+  color: #6b7280;
+  line-height: 1.7;
+  max-width: 78ch;
+}
+
+/* =========================
+   Featured (TourTrack)
+========================= */
+.projects__featured{
+  margin-top: 18px;
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(199,183,226,0.34);
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(31,41,55,0.06);
+}
+
+.projects__featuredTop{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.projects__brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.projects__logo{
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1px solid rgba(31,41,55,0.10);
+  background: #fff;
+}
+
+.projects__brandText{
+  display: flex;
+  flex-direction: column;
+}
+
+.projects__nameRow{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.projects__badge{
+  font-size: 12px;
+  font-weight: 900;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(199,183,226,0.22);
+  border: 1px solid rgba(199,183,226,0.45);
+  color: #1f2937;
+  white-space: nowrap;
+}
+
+.projects__featuredBody{
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 14px;
+  align-items: start;
+}
+
+/* TourTrack screenshots (mobile portrait) */
+.projects__shots{
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+}
+
+.projects__shotWrap{
+  width: 160px;
+  height: 260px;
+  border-radius: 18px;
+  border: 1px solid rgba(31,41,55,0.12);
+  background: rgba(255,255,255,0.85);
+  padding: 10px;
+  box-shadow: 0 10px 24px rgba(31,41,55,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.projects__shot{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 12px;
+}
+
+/* =========================
+   Grid (Trust Me + MeloMatch)
+========================= */
+.projects__grid{
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.projects__card{
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(199,183,226,0.28);
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(31,41,55,0.06);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.projects__card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(31,41,55,0.08);
+}
+
+.projects__top{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.projects__cardTitle{
+  margin: 0;
+  font-size: 18px;
+  font-weight: 900;
+  color: #1f2937;
+}
+
+.projects__cardSubtitle{
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(31,41,55,0.65);
+  font-weight: 800;
+}
+
+.projects__desc{
+  margin: 12px 0 0;
+  color: #6b7280;
+  line-height: 1.75;
+}
+
+.projects__tech{
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.projects__chip{
+  font-size: 12px;
+  font-weight: 800;
+  color: #1f2937;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(199,183,226,0.35);
+  background: rgba(255,255,255,0.75);
+}
+
+.projects__links{
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.projects__link{
+  text-decoration: none;
+  font-weight: 900;
+  color: #1f2937;
+  padding: 8px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(199,183,226,0.40);
+  background: rgba(255,255,255,0.75);
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.projects__link:hover{
+  transform: translateY(-1px);
+}
+
+.projects__link--disabled{
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* =========================
+   Trust Me – WIDE screenshot (web)
+   ✅ מותאם לתמונה רחבה, לא "משבצת" של מובייל
+========================= */
+.projects__card--wide{
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 14px;
+  align-items: start;
+}
+
+/* הקופסה עצמה רחבה ביחס 16:9 */
+.projects__wideMedia{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  border: 1px solid rgba(31,41,55,0.12);
+  background: rgba(255,255,255,0.90);
+  padding: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(31,41,55,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* התמונה ממלאת יפה את הקופסה */
+.projects__wideShot{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ✅ נראה כמו screenshot אתר */
+  display: block;
+  border-radius: 12px;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 1000px){
+  .projects__featuredBody{
+    grid-template-columns: 1fr;
+  }
+
+  .projects__shots{
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .projects__shotWrap{
+    width: 170px;
+    height: 280px;
+  }
+
+  .projects__grid{
+    grid-template-columns: 1fr;
+  }
+
+  .projects__card--wide{
+    grid-template-columns: 1fr;
+  }
+
+  .projects__wideMedia{
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 700px){
+  .projects__shotWrap{
+    width: 150px;
+    height: 260px;
+  }
+
+  .projects__wideMedia{
+    aspect-ratio: 16 / 9;
+  }
+}
