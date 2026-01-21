@@ -23,6 +23,17 @@ export default function Sidebar() {
 
   return (
     <aside className="sidebar">
+      {/* ✅ Mobile hamburger (placed first => left of avatar) */}
+      <button
+        className="sidebar__hamburger"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded={menuOpen ? "true" : "false"}
+        onClick={() => setMenuOpen((v) => !v)}
+      >
+        <span className="sidebar__burger" aria-hidden="true" />
+      </button>
+
       <div className="sidebar__profile">
         <img className="sidebar__avatar" src={profileImage} alt="Ori Katz" />
         <div>
@@ -83,17 +94,6 @@ export default function Sidebar() {
         Download CV
       </a>
 
-      {/* ✅ Mobile hamburger */}
-      <button
-        className="sidebar__hamburger"
-        type="button"
-        aria-label="Open menu"
-        aria-expanded={menuOpen ? "true" : "false"}
-        onClick={() => setMenuOpen((v) => !v)}
-      >
-        ☰
-      </button>
-
       {/* ✅ Mobile dropdown + overlay */}
       {menuOpen && (
         <>
@@ -107,7 +107,7 @@ export default function Sidebar() {
           <div className="sidebar__menu" role="menu">
             <div className="sidebar__menuTitle">Menu</div>
 
-            {/* ✅ Routes in hamburger */}
+            {/* Routes */}
             <NavLink className="sidebar__menuItem" to="/" end role="menuitem">
               Home
             </NavLink>
@@ -123,7 +123,7 @@ export default function Sidebar() {
 
             <div className="sidebar__menuDivider" />
 
-            {/* ✅ Socials + CV */}
+            {/* Socials + CV */}
             <a
               className="sidebar__menuItem"
               href="https://github.com/orikatz99"

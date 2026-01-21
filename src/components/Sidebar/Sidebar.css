@@ -132,6 +132,11 @@
   display: none;
 }
 
+/* burger icon (3 lines) */
+.sidebar__burger{
+  display: none;
+}
+
 .sidebar__overlay,
 .sidebar__menu{
   display: none;
@@ -140,23 +145,68 @@
 /* ✅ Mobile Top Bar behavior (ONLY mobile) */
 @media (max-width: 900px){
   .sidebar{
-    /* ✅ reset the desktop sidebar behavior that breaks mobile */
-    height: auto;                 /* IMPORTANT */
+    height: auto;
     top: 12px;
     position: sticky;
     z-index: 50;
 
     display: flex;
-    flex-direction: row;          /* IMPORTANT */
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+
+    /* ✅ so we can control order nicely */
+    justify-content: flex-start;
+    gap: 10px;
 
     padding: 12px 12px;
   }
 
+  /* ✅ Hamburger appears on the LEFT */
+  .sidebar__hamburger{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    border: 1px solid rgba(199,183,226,0.35);
+    background: rgba(255,255,255,0.85);
+    color: var(--text);
+    cursor: pointer;
+    flex: 0 0 auto;
+    padding: 0;
+  }
+
+  .sidebar__hamburger:active{
+    transform: scale(0.98);
+  }
+
+  /* ✅ Bigger lines that match the square */
+  .sidebar__burger{
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--text);
+    position: relative;
+  }
+
+  .sidebar__burger::before,
+  .sidebar__burger::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--text);
+  }
+
+  .sidebar__burger::before{ top: -6px; }
+  .sidebar__burger::after{ top: 6px; }
+
   .sidebar__profile{
-    /* ✅ stop centering like a big card */
     text-align: left;
     display: flex;
     align-items: center;
@@ -167,7 +217,7 @@
   .sidebar__avatar{
     width: 40px;
     height: 40px;
-    margin: 0;                    /* IMPORTANT */
+    margin: 0;
     border-radius: 14px;
   }
 
@@ -184,9 +234,9 @@
     display: none;
   }
 
-  /* ✅ top menu on the right */
+  /* ✅ top menu on the right (horizontal scroll) */
   .sidebar__nav{
-    margin: 0;
+    margin: 0 0 0 auto; /* pushes nav to the right */
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -194,7 +244,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     padding-bottom: 2px;
-    max-width: 62vw;              /* so it won’t push layout */
+    max-width: 58vw;
   }
 
   .sidebar__navLink{
@@ -203,31 +253,9 @@
     border-radius: 12px;
   }
 
-  /* ✅ hide CV on mobile (we'll show it inside hamburger) */
+  /* ✅ hide CV on mobile (we show it inside hamburger) */
   .sidebar__cv{
     display: none;
-  }
-
-  /* =========================
-     ✅ Hamburger on mobile
-  ========================= */
-  .sidebar__hamburger{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 14px;
-    border: 1px solid rgba(199,183,226,0.35);
-    background: rgba(255,255,255,0.85);
-    color: var(--text);
-    font-weight: 900;
-    cursor: pointer;
-    flex: 0 0 auto;
-  }
-
-  .sidebar__hamburger:active{
-    transform: scale(0.98);
   }
 
   /* overlay behind dropdown */
@@ -288,7 +316,6 @@
     background: rgba(255,255,255,0.70);
   }
 
-  /* Active navlink highlight in menu */
   .sidebar__menuItem.active{
     border-color: rgba(199,183,226,0.45);
     background: rgba(199,183,226,0.18);
