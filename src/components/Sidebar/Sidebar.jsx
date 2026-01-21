@@ -18,7 +18,6 @@ export default function Sidebar() {
             rel="noreferrer"
             aria-label="GitHub"
           >
-            {/* GitHub SVG */}
             <svg viewBox="0 0 24 24" width="18" height="18">
               <path
                 fill="currentColor"
@@ -34,7 +33,6 @@ export default function Sidebar() {
             rel="noreferrer"
             aria-label="LinkedIn"
           >
-            {/* LinkedIn SVG */}
             <svg viewBox="0 0 24 24" width="18" height="18">
               <path
                 fill="currentColor"
@@ -46,10 +44,18 @@ export default function Sidebar() {
       </div>
 
       <nav className="sidebar__nav" aria-label="Section navigation">
-        <NavLink className="sidebar__navLink" to="/">Home</NavLink>
-        <NavLink className="sidebar__navLink" to="/about">About</NavLink>
-        <NavLink className="sidebar__navLink" to="/projects">Projects</NavLink>
-        <NavLink className="sidebar__navLink" to="/skills">Technical Skills</NavLink>
+        <NavLink className="sidebar__navLink" to="/" end>
+          Home
+        </NavLink>
+        <NavLink className="sidebar__navLink" to="/about">
+          About
+        </NavLink>
+        <NavLink className="sidebar__navLink" to="/projects">
+          Projects
+        </NavLink>
+        <NavLink className="sidebar__navLink" to="/skills">
+          Technical Skills
+        </NavLink>
       </nav>
 
       <a className="sidebar__cv" href="/CV_Ori_Katz.pdf" download>
