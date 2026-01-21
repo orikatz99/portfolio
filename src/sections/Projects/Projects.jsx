@@ -35,7 +35,7 @@ const projects = [
     tech: ["React", "Node.js", "OpenAI API", "Google Auth", "Cloudinary", "Youtube API"],
     links: [
       { label: "GitHub", href: "https://github.com/miryamMazor/Hackathon_2025_Maya_team" },
-      { label: "Demo (soon)", href: "#", disabled: true },
+      { label: "Demo", href: "https://www.youtube.com/watch?v=7-ARs6UO6Vg"},
     ],
     media: {
       shot: trustmeShot,
