@@ -125,6 +125,18 @@
   box-shadow: 0 10px 30px rgba(31,41,55,0.10);
 }
 
+/* =========================
+   Hamburger (hidden on desktop)
+========================= */
+.sidebar__hamburger{
+  display: none;
+}
+
+.sidebar__overlay,
+.sidebar__menu{
+  display: none;
+}
+
 /* ✅ Mobile Top Bar behavior (ONLY mobile) */
 @media (max-width: 900px){
   .sidebar{
@@ -191,8 +203,105 @@
     border-radius: 12px;
   }
 
-  /* ✅ hide CV on mobile (optional) */
+  /* ✅ hide CV on mobile (we'll show it inside hamburger) */
   .sidebar__cv{
     display: none;
+  }
+
+  /* =========================
+     ✅ Hamburger on mobile
+  ========================= */
+  .sidebar__hamburger{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    border: 1px solid rgba(199,183,226,0.35);
+    background: rgba(255,255,255,0.85);
+    color: var(--text);
+    font-weight: 900;
+    cursor: pointer;
+    flex: 0 0 auto;
+  }
+
+  .sidebar__hamburger:active{
+    transform: scale(0.98);
+  }
+
+  /* overlay behind dropdown */
+  .sidebar__overlay{
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(31,41,55,0.18);
+    border: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 60;
+  }
+
+  /* dropdown menu */
+  .sidebar__menu{
+    display: block;
+    position: fixed;
+    top: 72px;
+    right: 14px;
+    width: 250px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(31,41,55,0.10);
+    box-shadow: 0 18px 60px rgba(31,41,55,0.12);
+    padding: 10px;
+    z-index: 70;
+  }
+
+  .sidebar__menuTitle{
+    font-weight: 900;
+    color: var(--text);
+    padding: 8px 10px 6px;
+    font-size: 13px;
+    opacity: 0.8;
+  }
+
+  .sidebar__menuDivider{
+    height: 1px;
+    background: rgba(31,41,55,0.10);
+    margin: 8px 6px;
+    border-radius: 99px;
+  }
+
+  .sidebar__menuItem{
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 800;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+  }
+
+  .sidebar__menuItem:hover{
+    border-color: rgba(31,41,55,0.10);
+    background: rgba(255,255,255,0.70);
+  }
+
+  /* Active navlink highlight in menu */
+  .sidebar__menuItem.active{
+    border-color: rgba(199,183,226,0.45);
+    background: rgba(199,183,226,0.18);
+  }
+
+  .sidebar__menuItem--primary{
+    margin-top: 6px;
+    border-color: rgba(199,183,226,0.35);
+    background: linear-gradient(
+      90deg,
+      rgba(242,198,216,0.65),
+      rgba(199,183,226,0.55)
+    );
+    text-align: center;
   }
 }

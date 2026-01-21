@@ -1,15 +1,36 @@
 import "./Sidebar.css";
 import profileImage from "../../assets/profile.jpeg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Sidebar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // close menu when route changes
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  // close on ESC
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   return (
     <aside className="sidebar">
       <div className="sidebar__profile">
         <img className="sidebar__avatar" src={profileImage} alt="Ori Katz" />
-        <div className="sidebar__name">Ori Katz</div>
-        <div className="sidebar__role">Junior Software Developer</div>
+        <div>
+          <div className="sidebar__name">Ori Katz</div>
+          <div className="sidebar__role">Junior Software Developer</div>
+        </div>
 
+        {/* Desktop socials */}
         <div className="sidebar__socials">
           <a
             className="sidebar__socialIcon"
@@ -61,6 +82,79 @@ export default function Sidebar() {
       <a className="sidebar__cv" href="/CV_Ori_Katz.pdf" download>
         Download CV
       </a>
+
+      {/* ✅ Mobile hamburger */}
+      <button
+        className="sidebar__hamburger"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded={menuOpen ? "true" : "false"}
+        onClick={() => setMenuOpen((v) => !v)}
+      >
+        ☰
+      </button>
+
+      {/* ✅ Mobile dropdown + overlay */}
+      {menuOpen && (
+        <>
+          <button
+            className="sidebar__overlay"
+            type="button"
+            aria-label="Close menu"
+            onClick={() => setMenuOpen(false)}
+          />
+
+          <div className="sidebar__menu" role="menu">
+            <div className="sidebar__menuTitle">Menu</div>
+
+            {/* ✅ Routes in hamburger */}
+            <NavLink className="sidebar__menuItem" to="/" end role="menuitem">
+              Home
+            </NavLink>
+            <NavLink className="sidebar__menuItem" to="/about" role="menuitem">
+              About
+            </NavLink>
+            <NavLink className="sidebar__menuItem" to="/projects" role="menuitem">
+              Projects
+            </NavLink>
+            <NavLink className="sidebar__menuItem" to="/skills" role="menuitem">
+              Technical Skills
+            </NavLink>
+
+            <div className="sidebar__menuDivider" />
+
+            {/* ✅ Socials + CV */}
+            <a
+              className="sidebar__menuItem"
+              href="https://github.com/orikatz99"
+              target="_blank"
+              rel="noreferrer"
+              role="menuitem"
+            >
+              GitHub
+            </a>
+
+            <a
+              className="sidebar__menuItem"
+              href="https://www.linkedin.com/in/orikatz99"
+              target="_blank"
+              rel="noreferrer"
+              role="menuitem"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              className="sidebar__menuItem sidebar__menuItem--primary"
+              href="/CV_Ori_Katz.pdf"
+              download
+              role="menuitem"
+            >
+              Download CV
+            </a>
+          </div>
+        </>
+      )}
     </aside>
   );
 }
