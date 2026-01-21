@@ -1,6 +1,6 @@
-// App.jsx
-import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
+import "./App.css";
+
 import Sidebar from "./components/Sidebar/Sidebar";
 import Home from "./sections/Home/Home";
 import About from "./sections/About/About";

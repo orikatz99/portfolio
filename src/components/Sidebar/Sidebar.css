@@ -120,3 +120,64 @@
   box-shadow: 0 10px 30px rgba(31,41,55,0.10);
 }
 
+/* ✅ Mobile Top Bar behavior */
+@media (max-width: 900px){
+  .sidebar{
+    width: 100%;
+    position: sticky;
+    top: 12px;
+    z-index: 50;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 14px 14px;
+  }
+
+  /* make profile compact */
+  .sidebar__profile{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .sidebar__avatar{
+    width: 44px;
+    height: 44px;
+  }
+
+  .sidebar__role{
+    display: none; /* top bar: keep it clean */
+  }
+
+  /* nav becomes horizontal */
+  .sidebar__nav{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 0;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .sidebar__navLink{
+    white-space: nowrap;
+    padding: 8px 10px;
+    border-radius: 12px;
+  }
+
+  /* CV button smaller (or hide if you prefer) */
+  .sidebar__cv{
+    display: none; /* אם תרצי להשאיר – תגידי ואשנה */
+  }
+
+  /* socials compact */
+  .sidebar__socials{
+    display: none; /* אם תרצי להציג – אפשר להחזיר */
+  }
+}
