@@ -1,4 +1,3 @@
-// Projects.jsx
 import "./Projects.css";
 
 import tourtrackLogo from "../../assets/tourtrack-logo.png";
@@ -6,8 +5,23 @@ import tourtrackShot1 from "../../assets/tourtrack-1.jpeg";
 import tourtrackShot2 from "../../assets/tourtrack-2.jpeg";
 import trustmeShot from "../../assets/trustme.png";
 import melomatchLogo from "../../assets/melomatch-logo.png";
+import timeReportingShot from "../../assets/TimeReport.png";
 
 const projects = [
+  {
+    title: "Time Reporting System",
+    subtitle: "Abra • AI-First Development Bootcamp",
+    badge: "Featured",
+    description:
+      "Full-stack employee management and time reporting platform developed during Abra's AI-First Development Bootcamp. Working in an agile team environment, we received a real-world PRD, participated in daily standups, and built a production-style application featuring employee and task management, time reporting, role-based permissions, and secure authentication. The project leveraged modern AI-first development practices including MCP architecture, subagents, reusable skills, custom commands, Cloud Code, and Codex to accelerate development and collaboration.",
+    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "JWT Auth", "Docker", "CI/CD", "MCP", "AI Development Agents"],
+    links: [
+      { label: "GitHub", href: "https://github.com/AI-development-bootcamp-2/team-rocket/blob/main/README.md" },
+      { label: "Demo", href: "https://time-reporting-flame.vercel.app/login" },
+    ],
+    highlight: true,
+    media: { shot: timeReportingShot },
+  },
   {
     title: "TourTrack",
     subtitle: "Final Project • Android + Backend",
@@ -15,10 +29,7 @@ const projects = [
       "Tourism social network app built for the Lower Galilee Regional Council. Features personalized route recommendations, nearby user discovery and chat, and a scalable backend with REST APIs. The app is currently under the client’s budget review for continued development — feel free to explore the code on GitHub or watch the demo video.",
     tech: ["Android (Java)", "Node.js", "MongoDB", "Firebase Storage", "REST APIs"],
     links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/ShaniHalali/Final-Project-TourTrack-app/blob/main/README.md",
-      },
+      { label: "GitHub", href: "https://github.com/ShaniHalali/Final-Project-TourTrack-app/blob/main/README.md" },
       { label: "Demo", href: "https://www.youtube.com/watch?v=oH4EgSAv1es" },
     ],
     highlight: true,
@@ -35,11 +46,9 @@ const projects = [
     tech: ["React", "Node.js", "OpenAI API", "Google Auth", "Cloudinary", "Youtube API"],
     links: [
       { label: "GitHub", href: "https://github.com/miryamMazor/Hackathon_2025_Maya_team" },
-      { label: "Demo", href: "https://www.youtube.com/watch?v=7-ARs6UO6Vg"},
+      { label: "Demo", href: "https://www.youtube.com/watch?v=7-ARs6UO6Vg" },
     ],
-    media: {
-      shot: trustmeShot,
-    },
+    media: { shot: trustmeShot },
   },
   {
     title: "MeloMatch",
@@ -51,9 +60,7 @@ const projects = [
       { label: "GitHub", href: "https://github.com/orikatz99/MeloMatch" },
       { label: "Demo", href: "https://www.youtube.com/shorts/pj65kfB61Ik" },
     ],
-    media: {
-    logo: melomatchLogo,
-  },
+    media: { logo: melomatchLogo },
   },
 ];
 
@@ -80,8 +87,150 @@ function ProjectLinks({ links }) {
   );
 }
 
+function ProjectMedia({ project }) {
+  if (project.media?.shots) {
+    return (
+      <div className="projects__shots">
+        {project.media.shots.map((src, idx) => (
+          <div key={idx} className="projects__shotWrap">
+            <img
+              className="projects__shot"
+              src={src}
+              alt={`${project.title} screenshot ${idx + 1}`}
+            />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (project.media?.shot) {
+    return (
+      <div className="projects__wideMedia">
+        <img
+          className="projects__wideShot"
+          src={project.media.shot}
+          alt={`${project.title} screenshot`}
+        />
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function FeaturedProject({ project }) {
+  return (
+    <article className="projects__featured">
+      <div className="projects__featuredTop">
+        <div className="projects__brand">
+          {project.media?.logo && (
+            <img
+              className="projects__logo"
+              src={project.media.logo}
+              alt={`${project.title} logo`}
+            />
+          )}
+
+          <div className="projects__brandText">
+            <div className="projects__nameRow">
+              <h3 className="projects__cardTitle">{project.title}</h3>
+              {project.badge && <span className="projects__badge">{project.badge}</span>}
+            </div>
+            <div className="projects__cardSubtitle">{project.subtitle}</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="projects__featuredBody">
+        <div className="projects__featuredLeft">
+          <p className="projects__desc">{project.description}</p>
+
+          <div className="projects__tech">
+            {project.tech.map((t) => (
+              <span key={t} className="projects__chip">
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <ProjectLinks links={project.links} />
+        </div>
+
+        <div className="projects__featuredRight">
+          <ProjectMedia project={project} />
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function RegularProject({ project }) {
+  const isWideProject = project.title === "Trust Me";
+
+  return (
+    <article className={`projects__card ${isWideProject ? "projects__card--wide" : ""}`}>
+      {isWideProject ? (
+        <>
+          <div className="projects__wideLeft">
+            <h3 className="projects__cardTitle">{project.title}</h3>
+            <div className="projects__cardSubtitle">{project.subtitle}</div>
+
+            <p className="projects__desc">{project.description}</p>
+
+            <div className="projects__tech">
+              {project.tech.map((t) => (
+                <span key={t} className="projects__chip">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <ProjectLinks links={project.links} />
+          </div>
+
+          <div className="projects__wideRight">
+            <ProjectMedia project={project} />
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="projects__top">
+            <div className="projects__brand">
+              {project.media?.logo && (
+                <img
+                  className="projects__logo"
+                  src={project.media.logo}
+                  alt={`${project.title} logo`}
+                />
+              )}
+
+              <div className="projects__brandText">
+                <h3 className="projects__cardTitle">{project.title}</h3>
+                <div className="projects__cardSubtitle">{project.subtitle}</div>
+              </div>
+            </div>
+          </div>
+
+          <p className="projects__desc">{project.description}</p>
+
+          <div className="projects__tech">
+            {project.tech.map((t) => (
+              <span key={t} className="projects__chip">
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <ProjectLinks links={project.links} />
+        </>
+      )}
+    </article>
+  );
+}
+
 export default function Projects() {
-  const featured = projects.find((p) => p.highlight);
+  const featuredProjects = projects.filter((p) => p.highlight);
   const rest = projects.filter((p) => !p.highlight);
 
   return (
@@ -94,136 +243,14 @@ export default function Projects() {
         </p>
       </div>
 
-      {/* Featured (TourTrack) */}
-      {featured && (
-        <article className="projects__featured">
-          <div className="projects__featuredTop">
-            <div className="projects__brand">
-              {featured.media?.logo ? (
-                <img
-                  className="projects__logo"
-                  src={featured.media.logo}
-                  alt={`${featured.title} logo`}
-                />
-              ) : null}
+      {featuredProjects.map((project) => (
+        <FeaturedProject key={project.title} project={project} />
+      ))}
 
-              <div className="projects__brandText">
-                <div className="projects__nameRow">
-                  <h3 className="projects__cardTitle">{featured.title}</h3>
-                  <span className="projects__badge">Featured</span>
-                </div>
-                <div className="projects__cardSubtitle">{featured.subtitle}</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="projects__featuredBody">
-            <div className="projects__featuredLeft">
-              <p className="projects__desc">{featured.description}</p>
-
-              <div className="projects__tech">
-                {featured.tech.map((t) => (
-                  <span key={t} className="projects__chip">
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <ProjectLinks links={featured.links} />
-            </div>
-
-            <div className="projects__featuredRight">
-              <div className="projects__shots">
-                {featured.media?.shots?.map((src, idx) => (
-                  <div key={idx} className="projects__shotWrap">
-                    <img
-                      className="projects__shot"
-                      src={src}
-                      alt={`${featured.title} screenshot ${idx + 1}`}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </article>
-      )}
-
-      {/* Rest (Trust Me + MeloMatch) */}
       <div className="projects__grid">
-        {rest.map((p) => {
-          const isTrustMe = p.title === "Trust Me";
-
-          return (
-            <article
-              key={p.title}
-              className={`projects__card ${isTrustMe ? "projects__card--wide" : ""}`}
-            >
-              {isTrustMe ? (
-                <>
-                  <div className="projects__wideLeft">
-                    <div className="projects__top">
-                      <div>
-                        <h3 className="projects__cardTitle">{p.title}</h3>
-                        <div className="projects__cardSubtitle">{p.subtitle}</div>
-                      </div>
-                    </div>
-
-                    <p className="projects__desc">{p.description}</p>
-
-                    <div className="projects__tech">
-                      {p.tech.map((t) => (
-                        <span key={t} className="projects__chip">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    <ProjectLinks links={p.links} />
-                  </div>
-
-                  <div className="projects__wideRight">
-                    <div className="projects__wideMedia">
-                        <img className="projects__wideShot" src={p.media.shot} alt="Trust Me screenshot" />
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="projects__top">
-                    <div className="projects__brand">
-                        {p.media?.logo && (
-                        <img
-                        className="projects__logo"
-                        src={p.media.logo}
-                        alt={`${p.title} logo`}
-                  />
-          )}
-
-    <div className="projects__brandText">
-      <h3 className="projects__cardTitle">{p.title}</h3>
-      <div className="projects__cardSubtitle">{p.subtitle}</div>
-    </div>
-  </div>
-</div>
-
-
-                  <p className="projects__desc">{p.description}</p>
-
-                  <div className="projects__tech">
-                    {p.tech.map((t) => (
-                      <span key={t} className="projects__chip">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  <ProjectLinks links={p.links} />
-                </>
-              )}
-            </article>
-          );
-        })}
+        {rest.map((project) => (
+          <RegularProject key={project.title} project={project} />
+        ))}
       </div>
     </section>
   );

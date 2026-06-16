@@ -5,7 +5,7 @@ const skillGroups = [
   {
     title: "Programming Languages",
     icon: "💻",
-    items: ["Java", "JavaScript", "C", "C++", "Python", "SQL"],
+    items: ["Java", "JavaScript", "TypeScript", "C", "C++", "Python", "SQL"],
   },
   {
     title: "Frontend",
@@ -15,22 +15,43 @@ const skillGroups = [
   {
     title: "Backend & APIs",
     icon: "🛠️",
-    items: ["Node.js", "Express", "REST APIs", "MongoDB", "PostgreSQL"],
+    items: [
+      "Node.js",
+      "Express",
+      "REST APIs",
+      "JWT Auth",
+      "Google Auth",
+      "MongoDB",
+      "PostgreSQL",
+    ],
   },
   {
-    title: "AI",
+    title: "AI & Agents",
     icon: "🤖",
-    items: ["OpenAI API", "AI Agent Development", "Prompt Design", "Machine Learning"],
+    items: [
+      "OpenAI API",
+      "AI Agent Development",
+      "MCP",
+      "Subagents",
+      "Prompt Design",
+      "Cloud Code",
+      "Codex",
+    ],
+  },
+  {
+    title: "Cloud & Storage",
+    icon: "☁️",
+    items: ["Google Cloud", "Cloudinary", "Firebase Storage"],
   },
   {
     title: "Tools & Platforms",
     icon: "🧰",
-    items: ["Git", "GitHub", "Google Cloud", "Cloudinary", "Linux"],
+    items: ["Git", "GitHub", "Docker", "Linux", "CI/CD"],
   },
   {
     title: "Methodologies",
     icon: "🚀",
-    items: ["Agile", "Team Collaboration"],
+    items: ["Agile", "Daily Standups", "Team Collaboration", "PRD-Based Development"],
   },
 ];
 
